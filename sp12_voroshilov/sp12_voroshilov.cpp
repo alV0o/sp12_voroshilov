@@ -62,6 +62,7 @@ int main()
 		Sleep(1000);
 		system("cls");
 	}
+	CloseHandle(hMutex);
 	std::cout << "Принтер отключился" << std::endl;
 	_getch();
 }

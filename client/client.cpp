@@ -26,27 +26,23 @@ int main()
 				case 'a': {
 					SetPriorityClass(GetCurrentProcess(), IDLE_PRIORITY_CLASS);
 					std::cout << "Задан фоновый приоритет" << std::endl;
-					Sleep(1000);
 				}
-						break;
+				break;
 				case 'b': {
 					SetPriorityClass(GetCurrentProcess(), NORMAL_PRIORITY_CLASS);
 					std::cout << "Задан нормальный приоритет" << std::endl;
-					Sleep(1000);
 				}
-						break;
+				break;
 				case 'c': {
 					SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
 					std::cout << "Задан высокий приоритет" << std::endl;
-					Sleep(1000);
 				}
-						break;
+				break;
 				default: {
 
 					if (WaitForSingleObject(hMutex, 0) == WAIT_TIMEOUT) {
 						system("cls");
 						std::cout << "Мьютекс занят" << std::endl;
-						Sleep(1000);
 					}
 					else {
 						system("cls");
@@ -54,16 +50,16 @@ int main()
 						Sleep(1000);
 						ReleaseMutex(hMutex);
 						Sleep(1000);
+
 						WaitForSingleObject(hMutex, INFINITE);
 						system("cls");
 						std::cout << "Печать завершена" << std::endl;
 						ReleaseMutex(hMutex);
-
-						CloseHandle(hMutex);
-						Sleep(1000);
 					}
 				}
 			}
+			CloseHandle(hMutex);
+			Sleep(1000);
 		}
 	}
 }
